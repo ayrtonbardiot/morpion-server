@@ -1,7 +1,12 @@
-var users;
-var i;
-exports.execute = function execute(data) {
-    i = 1;
-    users = new Map();
-    users.set(i, data)
+const server = require('../index.js');
+
+var users = new Map();
+
+exports.execute = function execute(data, session) {
+
+    users.set(session, data);
+    process.title = 'Morpion server - ' + users.size + ' users online'
+
 }
+
+exports.users = users;
